@@ -40,8 +40,13 @@ if(isset($_POST["username"])){
 				$ip_address=$_SERVER['REMOTE_ADDR']; 
 				$query=mysql_query("INSERT INTO members(username,firstname,lastname,email,password,ip_address,sign_up_data) VALUES('$username','$fname','$lname','$email','$pass1','$ip_address',now())") or die("Could not insert the data");
 				$member_id=mysql_insert_id();
-				mkdir("users/$member_id",0755);
-				$message="You have now been registered";
+				
+				$message="You have now been registered!\r\n You will be redirected to home page in 5 seconds .... ";
+				
+				echo "<script type='text/javascript'>setTimeout(function(){ window.location = 'index.php'; }, 5000);</script>";
+				
+				
+				
 					
 			}
 			
